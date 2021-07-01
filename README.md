@@ -1,62 +1,201 @@
-# Release note 20.4.2
+# SCMS User Guide
 
-![Une image contenant dessin
 
-Description g&#xE9;n&#xE9;r&#xE9;e automatiquement](.gitbook/assets/0.png)![](.gitbook/assets/1.jpeg)
 
-Release Notes
+## ![](.gitbook/assets/0%20%281%29.png)![](.gitbook/assets/1%20%281%29.jpeg)
 
-Dimonoff \| SCMS
+## User Guide
 
-Version 20.4.2
+SCMS V20.2
 
-Release Notes – Dimonoff \| SCMS 20.4.2
+Reports Menu
 
-**Release Date:** 2021-05-07
 
-**What’s New:**
 
-N/A
+## Reports: User Defined Queries
 
-**Improvements:**
+This section contains information and instructions for using the features accessed via the “Reports– User Defined Queries” tab in the Dimonoff \| SCMS platform.
 
-* The default logout timeout has been upgraded to 20 minutes instead of 10 minutes.
-* In the menu Configuration -Devices – Details, the “Street Lamp Identifier” field has been expanded so you can see all the characters, even if it is a very long identifier.
-* In the Maps menu, the connectivity information was added in the exported file.
-* \(DOO\) In the Reports – Energy Logs menu, energy reports created by SCMS report generator have improved interpolation from the raw data \(by device – detailed report type\) received from Wireless Smart Lighting Nodes with older firmware version.
-* \(DOO\) In the Configuration- Devices and Maps menus, SCMS provides more feedback to users while using the Rescue mechanism.
+Since many users use them, energy and alarm logs are prepackaged in Dimonoff \| SCMS. Users can also design their own reports, otherwise known as user defined queries.
 
-**Bug Fixes:**
+### Create a User Defined Query
 
-* In the Security – User logs menu, dates in the executed report were off by one day. It is no longer the case.
-* In certain cases, there was a mismatch between the “ON” percentage shown in the Zone Statuses menu and what is really on the map \(Dashboard menu\).
-* Sometimes, after turning off a node, the dimming level was not updated to “0”.
-* In the Dashboard menu, the “Not Responding” devices count did not match the value displayed on devices aggregation pie chart on the map.
-* In the Configuration- Devices and Gateways Statuses menus, when querying Gateway configurations, there was a MySQL bug that could occur. That was fixed.
-* In the Reports – Energy Logs menu, there was a partitioning failure error for the energy consumption logs table in the database.
-* In the Reports – Energy Logs menu, when there is a lot of data to report, the “By Hours By Day \(table\)” report query would timeout before getting the results. We optimized the way this report is generated and increased the timeout.
-* In the Reports – Energy Logs menu, “By Device – Detailed” report execution always produced data for one more day than what was requested.
-* In the Reports – Energy Logs and Inventory menus, when opening “Energy Logs” or “Inventory” reports tab, there was an interface bug which would display only titles of the elements in the right section.
-* In Administration – Parameters Management menu, the green check mark would not show after saving. We added it back.
-* In the menu Configuration- Zones-Building, after creating floors in a building, you had to reload the application to see the modification on the map.
-* In the Reports – Energy Logs menu, when exporting a “By Hour By Day \(table\)” report, the file would come out empty.
-* In the Reports – Energy Logs menu, “By Hour By Day \(chart\)” report had the wrong hours indexes, so energy value on the graph was assigned to the previous hour.
-* In the Dashboard menu, when saving a searchable field using the hooked parameter on the device information panel, the corresponding value displayed in “Configurations – Devices – Parameters” was changed to something else.
-* In the Security menu, we fixed the problem that made deleting a role impossible.
-* In the Dashboard menu, when a node was selected within a zone and you clicked on a new zone in the dropdown list, the zone changed, but the details panel did not update accordingly.
-* In Zone Statuses menu, the total of intelligent devices value used for “Alarms” and “Responding” percentage calculation was not the same than for the other fields.
-* In the Reports – User-Defined queries, a User Defined Query that applied to a range of dates \(condition: between dates\) would not execute anymore.
-* \(DOO\) – For H3 generation nodes, the “Restore Power On” alarm wasn’t mapped correctly so it appeared as “N/A” in the interface \(Dashboard menu\).
-* \(DOO\) – In the Configuration – Devices – Parameters menu, the “Restore Power On” alarm was not configurable for H3 generation nodes.
-* \(DOO\) – Remove N/A sometimes displayed in alarms for H3 generation nodes.
-* \(TLMW\) – We added a mechanism to be able to synchronize modifications to more than one schedule at a time for Telematics nodes.
-* \(TLMW\) – It was not possible to synchronize a Telematics gateway.
+To create a user defined query, follow these steps:
 
-**Deprecated:**
+1. Click “Reports” in the main menu.
 
-N/A
+Click the “User Defined Queries” tab.
 
-**Known Limitations:**
+Click the “Add” icon. The “Add Query” dialog appears.
 
-* In the Dashboard menu, the number of displayed devices on the same business unit is 101k.
+![](.gitbook/assets/12.png)
+
+**Note**: Personalized requests are only visible to the user who improves them. However, it is possible to share your personalized queries with other users. For more information on sharing, please refer to the “[Sharing a custom request]()” section.
+
+Complete these fields at the top of the dialog:
+
+| **Fields** | **Instructions** |
+| :--- | :--- |
+| Query Name | Enter a name for the report. Use words in the report that help other people identify the report’s contents \(examples: device names, functional layers, equipment providers\). |
+| Advanced Query | Click this checkbox to open a window and make a SQL request. |
+| Pin to Dashboard | Check this box so that the query is available directly on the “Dashboard” menu. When this box is checked, a new panel will be displayed on the Dashboard, which allows a quick and easy access to this request. |
+| Functional Layers | Click this checkbox and choose a functional layer from the drop list to limit the report’s results to devices in a specific functional layer. If you choose a functional layer, the “Add Query” dialog gains a fourth tab: “Parameters”. If you do not select a layer works, the search is done for all objects. |
+
+Complete all required fields in the “Devices” section \(illustrated earlier in this sequence of instructions\). To include device information, click the check box associated with that information in the dialog. It is possible to select only one box.
+
+| **Fields** | **Instructions \(to include this information, click its check box\)** |
+| :--- | :--- |
+| Device Name | Choose an arithmetic operator from the Condition drop list \(Greater Than, Equal, or Less Than\) and enter a value against which Dimonoff \| SCMS can test that condition. |
+| Serial Number | Choose an arithmetic operator from the Condition drop list \(Greater Than, Equal, or Less Than\) and enter a value against which Dimonoff \| SCMS can test that condition. |
+| Longitude | Simply click the check box. |
+| Latitude | Simply click the check box. |
+| Provider | Choose “Equal” from the Condition drop list, then choose the equipment provider from the Value drop list. |
+| Alarms | Choose “Equal” from the Conditions drop list, then click the Value field to include all the alarm types to include in this query. |
+| Modification Date | Choose an operator from the Condition drop list \(Greater Than, Equal, Less Than, Today, or Between\) then choose a date by clicking in the Value field. The value field becomes inactive if “Today” is chosen. The value field splits into two fields if “Between” is chosen. |
+| Install Date | Choose an operator from the Condition drop list \(Greater Than, Equal, Less Than, Today, or Between\) then choose a date by clicking in the Value field. The value field becomes inactive if “Today” is chosen. The value field splits into two fields if “Between” is chosen. |
+| Last Comm. Date | Choose an operator from the Condition drop list \(Greater Than, Equal, Less Than, Today, or Between\) then choose a date by clicking in the Value field. The value field becomes inactive if “Today” is chosen. The value field splits into two fields if “Between” is chosen. |
+| Alarm Date | Choose an operator from the Condition drop list \(Greater Than, Equal, Less Than, Today, or Between\) then choose a date by clicking in the Value field. The value field becomes inactive if “Today” is chosen. The value field splits into two fields if “Between” is chosen. |
+
+In the “Zones” section:
+
+Click the check box.
+
+Choose an arithmetic operator from the “Condition” drop list \(Greater Than, Equal, or Less Than\). This operator is optional.
+
+Enter a value against which Dimonoff \| SCMS can test that condition.
+
+![A screenshot of a cell phone
+
+Description automatically generated](.gitbook/assets/13.png)
+
+Complete all required fields in the “Groups” section. To include device information, click the check box associated with that information in the dialog.
+
+![A screenshot of a cell phone
+
+Description automatically generated](.gitbook/assets/14.png)
+
+| **Fields** | **Instructions \(to include this information, click its check box\)** |
+| :--- | :--- |
+| Group Name | Choose an arithmetic operator from the Condition drop list \(Greater Than, Equal, or Less Than\) and enter a value against which Dimonoff \| SCMS can test that condition. |
+| Group Code | Choose an arithmetic operator from the Condition drop list \(Greater Than, Equal, or Less Than\) and enter a value against which Dimonoff \| SCMS can test that condition. |
+
+If you chose the Functional Layers check box earlier in this sequence of instructions, the “Parameters” section is also available. For more information, refer to the first table of the “[Create a User Defined Query]()” section.
+
+Click “Save”.
+
+The query appears in the list of user defined queries, along with icons that enable user action.
+
+![](.gitbook/assets/15.png)
+
+### Run a User Defined Query
+
+To run a user defined query, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/16.png)
+
+Find the query in the list of queries that appears and click the “Execute” icon.
+
+### Modify a User Defined Query
+
+To modify a user defined query, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/17.png)
+
+Find the query in the list of queries that appears and click the “Edit” icon.
+
+### View Query Results in a Chart
+
+To view a user defined query as a chart, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/18.png)
+
+Find the query in the list of queries that appears and click the “Chart” icon.
+
+The Chart Query: \(query name\) dialog appears.
+
+This example was taken from a prebuilt sample and includes criteria from that sample query.
+
+The appearance of a Chart Query dialog will differ according to the criteria used to build that query and will not necessarily resemble the one below.
+
+![A screenshot of a cell phone
+
+Description automatically generated](.gitbook/assets/19.png)
+
+To exit this dialog at any time, lick the X in the top right corner or click inside the browser but outside the dialog.
+
+Complete these fields.
+
+| **Fields** | **Instructions** |
+| :--- | :--- |
+| Title | Enter a name for the chart. Use words that pertain to the content of the chart, such as a grouping of installation dates or a device name. |
+| Pin to Dashboard | Check this box so that the query is available directly on the Dashboard menu. When this box is checked, a new panel will be displayed on the Dashboard, which allows a quick and easy access to this request. |
+| Select Queries | Choose query data from the list. |
+
+Click “Next”. If you don’t see the “Next” button, scroll down in this dialog.
+
+In “Chart” types, choose the type of chart you want to use for your data and click “Finish”. The chart appears.
+
+### Share a User Defined Query
+
+You can share a query with other Dimonoff \| SCMS users. To do so, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/20.png)
+
+Find the query in the list of queries that appears and click the “Share” icon.
+
+The “Share Query: \(query name\)” dialog appears.
+
+Select a user from the “Share To:” drop list and click “Save”. This user will be able to accept or not the request using a window that will appear to ask him when he goes to the “Reports – User Defined Query” menu.
+
+### Export Results of a User Defined Query
+
+To export the results of a user defined query in a CSV format, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/21.png)
+
+Find the query in the list of queries that appears and click the “Export” icon.
+
+### Delete a User Defined Query
+
+To delete a user defined query, follow these steps:
+
+1. Click “Reports” in the main menu.
+
+Click the “User Defined Queries” tab.
+
+![](.gitbook/assets/22.png)
+
+Find the query in the list of queries that appears and click the “Delete” icon.
+
+A confirmation dialog appears.
+
+Click “Yes”.
+
+## Reports: Inventory
+
+The Inventory tab allows users to view their inventory of objects imported in Dimonoff \| SCMS. It is possible to search in the Inventory by business unit, by a configurable list of parameters and by ranges of installation dates. It is also possible to export the table using the "Download" icon at the top right of the image below.
+
+To configure this tab, you must contact the Dimonoff support. The tab is not active by default.
+
+![](.gitbook/assets/23.png)
 

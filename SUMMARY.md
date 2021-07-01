@@ -1,4 +1,10 @@
 # Table of contents
 
-* [Release note 20.4.2](README.md)
+* [SCMS User Guide](README.md)
+* [Table of content](table-of-content.md)
+
+## Reports
+
+* [Energy Logs](reports/energy-logs.md)
+* [Alarms Logs](reports/alarms-logs.md)
 
