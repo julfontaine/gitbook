@@ -4,6 +4,16 @@ This section contains information and instructions for using the features access
 
 Alarms serve to alert system administrators of issues with devices in the field. Dimonoff \| SCMS records all alarms in its database and administrators can review those alarms as a whole or by filtering for specific criteria. For example, a report can show only alarms that occur in zone X over the preceding week.
 
+{% tabs %}
+{% tab title="First Tab" %}
+Test 1
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
 ## Running an Alarm Logs Report
 
 To run an alarm logs report, follow these steps:
