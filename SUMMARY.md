@@ -6,5 +6,4 @@
 ## Reports
 
 * [Energy Logs](reports/energy-logs.md)
-* [Alarms Logs](reports/alarms-logs.md)
 
