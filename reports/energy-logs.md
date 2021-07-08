@@ -1,15 +1,5 @@
 # Energy Logs
 
-{% tabs %}
-{% tab title="First Tab" %}
-test
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
-{% endtabs %}
-
 This section contains information and instructions for using the features accessed via the “Reports– Energy Logs” tab in the Dimonoff \| SCMS platform. Energy logs allow users to consult the metrology data, including the energy consumption, of each node or zone according to several parameters and in the format of a table or a chart.
 
 You can run energy log reports manually and you can also schedule them to run at set intervals.
