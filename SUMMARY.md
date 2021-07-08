@@ -7,3 +7,7 @@
 
 * [Energy Logs](reports/energy-logs.md)
 
+---
+
+* [Alarm Logs](alarm-logs.md)
+
